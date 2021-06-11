@@ -220,14 +220,17 @@ namespace OOP_CourseWork
                 }
 
                 // Проверка корректности регулярного выражения
-                try
+                if (_useRegexCheckBox.Checked)
                 {
-                    Regex.IsMatch(String.Empty, _searchTextbox.Text);
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show($"Неверный формат регулярного выражения: {exception.Message}", "Поиск", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    try
+                    {
+                        Regex.IsMatch(String.Empty, _searchTextbox.Text);
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show($"Неверный формат регулярного выражения: {exception.Message}", "Поиск", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
 
